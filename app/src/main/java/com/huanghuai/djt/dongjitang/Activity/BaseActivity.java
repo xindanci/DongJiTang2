@@ -9,6 +9,7 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 
 import com.huanghuai.djt.dongjitang.Utils.SPUtils;
@@ -71,6 +72,7 @@ public abstract class BaseActivity extends FragmentActivity {
     private boolean isFirstart()
     {
         boolean firstart= (boolean) SPUtils.get(mcontext,"firstart",true);
+        Log.e("sda","dsaa");
         return firstart;
     }
     //销毁当前页面
