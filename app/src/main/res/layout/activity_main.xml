@@ -4,13 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#eeeeee"
+    android:fitsSystemWindows="true"
     tools:context=".Activity.MainActivity">
 
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="9"
          />
-    <include layout="@layout/tab_layout_for_bottom"/>
+
+
+        <include layout="@layout/tab_layout_for_bottom"
+            />
+
+
 </LinearLayout>

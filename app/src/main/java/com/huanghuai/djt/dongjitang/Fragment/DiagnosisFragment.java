@@ -12,7 +12,6 @@ import com.huanghuai.djt.dongjitang.R;
  * Created by Administrator on 2017/4/10.
  */
 public class DiagnosisFragment extends BaseFragment{
-    private Context mcontext;
     public DiagnosisFragment(Context context){
         this.mcontext=context;
     }
@@ -32,7 +31,13 @@ public class DiagnosisFragment extends BaseFragment{
     }
 
     @Override
+    public void getmContext() {
+        mcontext=getContext();
+    }
+
+    @Override
     protected View getResourceView(LayoutInflater inflater, ViewGroup container) {
-        return inflater.inflate(R.layout.fragment_hysician_diagnosis, container,false);
+        view = getActivity().getLayoutInflater().inflate(R.layout.fragment_hysician_diagnosis,null);
+        return view;
     }
 }

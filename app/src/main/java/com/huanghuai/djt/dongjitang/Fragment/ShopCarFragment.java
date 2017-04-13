@@ -1,6 +1,5 @@
 package com.huanghuai.djt.dongjitang.Fragment;
 
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,12 +8,21 @@ import android.view.ViewGroup;
 import com.huanghuai.djt.dongjitang.R;
 
 /**
- * Created by Administrator on 2017/4/10.
+ * Created by Administrator on 2017/4/13.
  */
-public class PersonalFragment extends BaseFragment{
-    public PersonalFragment(Context context){
+
+public class ShopCarFragment extends BaseFragment{
+
+    public ShopCarFragment(Context context)
+    {
         this.mcontext=context;
     }
+
+    protected View getResourceView(LayoutInflater inflater, ViewGroup container) {
+        view = getActivity().getLayoutInflater().inflate(R.layout.fragment_shopcar_page,null);
+        return view;
+    }
+
     @Override
     protected void initView() {
 
@@ -33,11 +41,5 @@ public class PersonalFragment extends BaseFragment{
     @Override
     public void getmContext() {
         mcontext=view.getContext();
-    }
-
-    @Override
-    protected View getResourceView(LayoutInflater inflater, ViewGroup container) {
-        view = getActivity().getLayoutInflater().inflate(R.layout.fragment_personal_center,null);
-        return view;
     }
 }
