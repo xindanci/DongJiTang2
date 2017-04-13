@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:id="@+id/search_doctor"
+        android:id="@+id/search_consultation"
         android:background="#ffffff"
         >
         <LinearLayout
@@ -63,7 +63,7 @@
         android:layout_height="1dip"
         />
     <LinearLayout
-        android:id="@+id/search_consultation"
+        android:id="@+id/search_doctor"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"

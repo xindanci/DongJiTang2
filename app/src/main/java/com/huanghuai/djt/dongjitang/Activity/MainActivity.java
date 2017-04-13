@@ -29,9 +29,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void activityGetActivity() {
         Intent intent = getIntent();
-
     }
-
     @Override
     public int getContentView() {
         return R.layout.activity_main;
@@ -45,7 +43,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         diagnosis = (ImageView) findViewById(R.id.iv_diagnosis);
         classification = (ImageView) findViewById(R.id.iv_classification);
         shopcar = (ImageView) findViewById(R.id.iv_shopcar);
-
     }
 
     @Override
@@ -86,8 +83,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         FragmentTransaction mtransaction = getSupportFragmentManager().beginTransaction();
         changeFragment(view, mtransaction);
     }
+
+
     //切换fragment
-    private void changeFragment(View view, FragmentTransaction mtransaction) {
+    private  void changeFragment(View view, FragmentTransaction mtransaction) {
         hideFragments(mtransaction);
         switch (view.getId()) {
             case R.id.iv_home:
@@ -113,6 +112,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 changeImage(1);
                 break;
             case R.id.iv_online:
+                ToastUtils.showInfo(mcontext, "在线购药");
                 if (onlineFragment == null) {
                     onlineFragment = new OnlineFragment(mcontext);
                     mtransaction.add(R.id.fragment_container, onlineFragment);

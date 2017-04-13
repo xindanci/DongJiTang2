@@ -5,8 +5,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="我是咨询"
+        android:text="体质测评"
         android:gravity="center"
         />
-
 </LinearLayout>

@@ -29,6 +29,8 @@
         <activity android:name=".Activity.SearchActivity"
             />
         <activity android:name=".Activity.SearchConsultation"/>
+        <activity android:name=".Activity.IdentificationActivity"/>
+        <activity android:name=".Activity.MapnavigationActivity"/>
     </application>
 
 </manifest>
