@@ -72,7 +72,7 @@ public abstract class BaseActivity extends FragmentActivity {
     private boolean isFirstart()
     {
         boolean firstart= (boolean) SPUtils.get(mcontext,"firstart",true);
-        Log.e("sda","dsaadsada231");
+        Log.e("sda","dsaadsada231321");
         return firstart;
     }
     //销毁当前页面
