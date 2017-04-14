@@ -227,6 +227,7 @@ public class ImageCycleView extends LinearLayout {
 					mImageViews[i].setBackgroundResource(R.mipmap.ic_home_point_normal);
 
 					Log.e("dsa","dasda1231321");
+					Log.e("nihao","wozaiceshi1 git");
 				}
 			}
 
