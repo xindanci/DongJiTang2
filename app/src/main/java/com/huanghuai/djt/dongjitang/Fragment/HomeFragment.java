@@ -2,6 +2,7 @@ package com.huanghuai.djt.dongjitang.Fragment;
 
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +13,16 @@ import com.huanghuai.djt.dongjitang.Activity.MapnavigationActivity;
 import com.huanghuai.djt.dongjitang.Activity.NewsActivity;
 import com.huanghuai.djt.dongjitang.Activity.SearchActivity;
 import com.huanghuai.djt.dongjitang.Activity.SearchConsultation;
+import com.huanghuai.djt.dongjitang.Bean.ADInfo;
+
+import com.huanghuai.djt.dongjitang.CustomUI.ImageCycleView;
+import com.huanghuai.djt.dongjitang.CustomUI.ImageCycleView.ImageCycleViewListener;
+import com.huanghuai.djt.dongjitang.Net.HomeFragmentNet;
 import com.huanghuai.djt.dongjitang.R;
 import com.huanghuai.djt.dongjitang.Utils.ActivityJumpUtils;
 import com.huanghuai.djt.dongjitang.Utils.ToastUtils;
+
+import java.util.ArrayList;
 
 /**
  * Created by Administrator on 2017/4/10.
@@ -27,8 +35,17 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     //预约挂号，体质辨识,在线药房，地图导航
     private LinearLayout it_appointment_home,
             it_identification_home, it_onlinebooking_home, it_mapnavigation_home;
+    private HomeFragmentNet homeFragmentNet;
+    //轮播图连网 解析到的图片 地址2
+    private String [] loopnetUrls;
+    //轮播图组件
+    private ImageCycleView cycleViewPager;
+    //
+    ImageCycleViewListener mAdCycleViewListener;
 
-
+    //轮播图的对象集合
+    private ArrayList<ADInfo> infos = new ArrayList<ADInfo>();
+    //获取homeFragemnt的联网所需要的数据
     public HomeFragment(Context context) {
         this.mcontext = context;
     }
@@ -43,6 +60,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         it_identification_home= (LinearLayout) view.findViewById(R.id.it_identification_home);
         it_onlinebooking_home= (LinearLayout) view.findViewById(R.id.it_onlinebooking_home);
         it_mapnavigation_home= (LinearLayout) view.findViewById(R.id.it_mapnavigation_home);
+        cycleViewPager= (ImageCycleView) view.findViewById(R.id.ad_view);
     }
 
     @Override
@@ -55,12 +73,40 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         it_onlinebooking_home.setOnClickListener(this);
         it_identification_home.setOnClickListener(this);
         it_appointment_home.setOnClickListener(this);
+        getRcycleListener();
     }
 
     @Override
     protected void initDate() {
-
+        if (homeFragmentNet==null) {
+            homeFragmentNet=new HomeFragmentNet();
+        }
+        loopnetUrls= homeFragmentNet.getListDate();
+        for(int i=0;i < loopnetUrls.length; i ++){
+            ADInfo info = new ADInfo();
+            info.setUrl(loopnetUrls[i]);
+            //info.setContent("top-->" + i);
+            infos.add(info);
+        }
+        cycleViewPager.setImageResources(infos, mAdCycleViewListener);
     }
+    private void getRcycleListener()
+    {
+        mAdCycleViewListener = new ImageCycleViewListener() {
+
+        @Override
+        public void onImageClick(ADInfo info, int position, View imageView) {
+            ToastUtils.showInfo(mcontext,"----->"+position);
+        }
+
+        @Override
+        public void displayImage(String imageURL, ImageView imageView) {
+            //ImageLoader.getInstance().displayImage(imageURL, imageView);// 使用ImageLoader对图片进行加装！
+            Log.e("---------->",imageURL);
+        }
+    };
+    }
+
 
     @Override
     public void getmContext() {
@@ -121,5 +167,24 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
             default:
                 break;
         }
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        cycleViewPager.startImageCycle();
+    };
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        cycleViewPager.pushImageCycle();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        cycleViewPager.pushImageCycle();
     }
 }
