@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.huanghuai.djt.dongjitang.Utils.SPUtils;
 
 import java.util.ArrayList;
@@ -38,6 +39,7 @@ public abstract class BaseActivity extends FragmentActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fresco.initialize(BaseActivity.this);
         setContentView(getContentView());
         activityGetActivity();
         mcontext= getApplicationContext();

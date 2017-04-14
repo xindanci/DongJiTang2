@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+
 /**
  * Created by Administrator on 2017/4/10.
  */
@@ -19,7 +21,9 @@ public abstract class BaseFragment extends Fragment {
     protected View view;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         return getResourceView(inflater,container);
+
     }
 
     @Override
