@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.MainActivity"
-            android:theme="@style/NoTitle"
+            android:theme="@style/ImageTranslucentTheme"
             />
         <activity android:name=".Activity.SplishActivity"
             android:theme="@style/NoTitle"

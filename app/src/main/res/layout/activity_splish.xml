@@ -18,36 +18,45 @@
         android:orientation="horizontal" >
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dip"
+            android:layout_height="10dip"
             android:layout_gravity="center_vertical"
             android:clickable="true"
-            android:padding="15.0dip"
-            android:background="@mipmap/red" />
+            android:padding="8.0dip"
+            android:background="@mipmap/red"
+
+            />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dip"
+            android:layout_height="10dip"
             android:layout_gravity="center_vertical"
             android:clickable="true"
-            android:padding="15.0dip"
-            android:background="@mipmap/bai" />
+            android:padding="8.0dip"
+            android:background="@mipmap/bai"
+            android:layout_marginLeft="5dip"
+
+            />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dip"
+            android:layout_height="10dip"
             android:layout_gravity="center_vertical"
             android:clickable="true"
-            android:padding="15.0dip"
-            android:background="@mipmap/bai" />
+            android:padding="8.0dip"
+            android:background="@mipmap/bai"
+            android:layout_marginLeft="5dip"
+            />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dip"
+            android:layout_height="10dip"
             android:layout_gravity="center_vertical"
             android:clickable="true"
-            android:padding="15.0dip"
-            android:background="@mipmap/bai" />
+            android:padding="8.0dip"
+            android:background="@mipmap/bai"
+            android:layout_marginLeft="5dip"
+            />
     </LinearLayout>
     <Button
         android:id="@+id/bt_login"
