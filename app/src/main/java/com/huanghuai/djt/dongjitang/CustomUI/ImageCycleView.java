@@ -226,7 +226,7 @@ public class ImageCycleView extends LinearLayout {
 				if (index != i) {
 					mImageViews[i].setBackgroundResource(R.mipmap.ic_home_point_normal);
 
-					Log.e("dsa","dasda");
+					Log.e("dsa","dasda1231");
 				}
 			}
 
