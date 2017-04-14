@@ -32,6 +32,7 @@ public abstract class BaseActivity extends FragmentActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             delHandler(msg);
+            Log.d("dsa","dsa");
         }
     };
     @Override
