@@ -64,7 +64,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         it_onlinebooking_home= (LinearLayout) view.findViewById(R.id.it_onlinebooking_home);
         it_mapnavigation_home= (LinearLayout) view.findViewById(R.id.it_mapnavigation_home);
         simpleCycleViewPager= (SimpleCycleViewPager) view.findViewById(R.id.mySimapleCycleViewPager);
-        bordy_scrollview= (ScrollView) view.findViewById(R.id.bord_scrollview);
+//        bordy_scrollview= (ScrollView) view.findViewById(R.id.bord_scrollview);
     }
 
     @Override
@@ -88,7 +88,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         }
         loopnetUrls= homeFragmentNet.getListDate();
         simpleCycleViewPager.setDatasource(loopnetUrls);
-        bordy_scrollview.setVerticalScrollBarEnabled(false);
+//        bordy_scrollview.setVerticalScrollBarEnabled(false);
 
     }
 
