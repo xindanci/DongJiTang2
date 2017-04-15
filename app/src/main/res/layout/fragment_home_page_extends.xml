@@ -126,6 +126,9 @@
         <include layout="@layout/home_fragment_bottom_date" />
         <include layout="@layout/home_fragment_bottom_date" />
         <include layout="@layout/home_fragment_bottom_date" />
+        <include layout="@layout/home_fragment_bottom_date" />
+        <include layout="@layout/home_fragment_bottom_date" />
+        <include layout="@layout/home_fragment_bottom_date" />
 
     </LinearLayout>
 </LinearLayout>
