@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import com.huanghuai.djt.dongjitang.Activity.SplishActivity;
 
 import java.util.List;
-
 /**
  * Created by Administrator on 2017/4/10.
  */
@@ -27,7 +26,6 @@ public class ViewPagerAdapter extends PagerAdapter{
         }
         return 0;
     }
-
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         container.addView(views.get(position),0);
