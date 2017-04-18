@@ -12,7 +12,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.huanghuai.djt.dongjitang.R;
+
 
 /**
  * 创建动画

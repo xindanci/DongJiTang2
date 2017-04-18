@@ -20,6 +20,8 @@ import com.huanghuai.djt.dongjitang.Fragment.HomeFragment;
 import com.huanghuai.djt.dongjitang.Fragment.OnlineFragment;
 import com.huanghuai.djt.dongjitang.R;
 import com.huanghuai.djt.dongjitang.Utils.ToastUtils;
+import com.nineoldandroids.animation.ObjectAnimator;
+import com.nineoldandroids.animation.PropertyValuesHolder;
 
 import java.util.List;
 
@@ -102,6 +104,12 @@ public class Online_Shop_Goods_RecycleView_Adapter extends RecyclerView.Adapter<
                 ToastUtils.showInfo(mcontext,"购物车被点击了");
                 //设置动画 开始位置
                 setAnimation(view);
+                PropertyValuesHolder scaleX= PropertyValuesHolder.ofFloat("scaleX", 0.0f,1.0f);
+                PropertyValuesHolder scaley=PropertyValuesHolder.ofFloat("scaleY", 0.0f,1.0f);
+                //values 属性集:A set of PropertyValuesHolder objects whose values will be animated between over time.
+                ObjectAnimator objectAnimator= ObjectAnimator.ofPropertyValuesHolder(()v, scaleX,scaley);
+                objectAnimator.setDuration(2000);
+                objectAnimator.start();
                 break;
             case R.id.shop_goods_name:
                 ToastUtils.showInfo(mcontext,"商品名字被点击了");
@@ -122,10 +130,6 @@ public class Online_Shop_Goods_RecycleView_Adapter extends RecyclerView.Adapter<
         ball.setImageResource(R.mipmap.number);
         monlineFragment.setAnim(ball, startLocation);// 开始执行动画
     }
-
-
-
-
 
     /**
      * 创建holder
