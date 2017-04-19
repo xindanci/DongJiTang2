@@ -2,20 +2,113 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#eeeeee"
     android:orientation="vertical">
-
-
-    <TextView
-        android:id="@+id/activity_text_view"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="88px"
+        android:layout_marginBottom="1px"
+        android:background="@mipmap/ic_home_title">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="药品分类"
+            android:textColor="#333333"
+            android:textSize="36px" />
+    </LinearLayout>
+    <include layout="@layout/online_shop_goods_classification"/>
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:text="分类详情"
-        android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
-        android:textStyle="bold|italic" />
+        android:layout_marginTop="1px"
+        android:weightSum="2"
+        >
+        <LinearLayout
+            android:id="@+id/shop_car_classification_ll"
+            android:layout_width="match_parent"
+            android:layout_height="77px"
+            android:layout_alignParentTop="true"
+            android:orientation="horizontal"
+            >
+            <Button
+                android:id="@+id/online_shop_classification_bt_new_product"
+                android:background="@drawable/bt_normal"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="新产品"
+                android:textColor="#333333"
+                android:textSize="28px"
+                android:gravity="center"
+                />
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent" />
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:background="@drawable/bt_normal"
+                android:id="@+id/online_shop_classification_rl"
+                >
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:id="@+id/online_shop_classification_bt_product"
+                    android:text="分类列表"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:textColor="#333333"
+                    android:textSize="28px"
+                    android:layout_height="match_parent"
+                    />
+                <ImageView
+                    android:id="@+id/classification_show"
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:layout_toRightOf="@id/online_shop_classification_bt_product"
+                    android:layout_centerVertical="true"
+                    android:background="@mipmap/classification_up"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
 
 
+        <LinearLayout
+            android:layout_marginTop="1px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:layout_below="@id/shop_car_classification_ll"
+            >
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/online_shop_goods_calssification_recycleview"
+                android:layout_width="match_parent"
+                android:scrollbars="vertical"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <ExpandableListView
+            android:id="@+id/online_shop_calssification_expandleListView_menu"
+            android:layout_marginTop="1px"
+            android:layout_width="300px"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/shop_car_classification_ll"/>
+        <TextView
+            android:id="@+id/check_classification_over"
+            android:background="@drawable/bt_press"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/online_shop_calssification_expandleListView_menu"
+            android:layout_width="300px"
+            android:textSize="22px"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="完成"
+            android:textColor="#333333"
+            />
+    </RelativeLayout>
 </LinearLayout>
 

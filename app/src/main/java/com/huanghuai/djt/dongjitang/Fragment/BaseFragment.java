@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.huanghuai.djt.dongjitang.CustomUI.ShopCarAnimation;
 
 /**
  * Created by Administrator on 2017/4/10.
@@ -19,6 +20,8 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 public abstract class BaseFragment extends Fragment {
     protected Context mcontext;
     protected View view;
+    //购物车动画类
+    protected ShopCarAnimation shopCarAnimation;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -50,4 +53,15 @@ public abstract class BaseFragment extends Fragment {
 
 
     public abstract void getmContext() ;
+    /**
+     * 设置动画 结束位置 并启动动画
+     * @param v
+     * @param startLocation
+     *
+     */
+    public void setAnim(final View v, int[] startLocation)
+    {
+        shopCarAnimation.setAnim(v,startLocation);
+
+    }
 }

@@ -44,6 +44,13 @@ public class Product_Goods {
     public void setLabel(String label) {
         this.label = label;
     }
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
 
     /**
      * 商品id
@@ -51,12 +58,16 @@ public class Product_Goods {
      * 价格
      * 评论数
      * 标签
-     *
+     *选中的 商品 数量
      */
     private int id;
     private String name;
     private String price;
     private String comment;
     private String label;
+
+
+
+    private int count;
 
 }

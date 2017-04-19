@@ -16,6 +16,7 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.huanghuai.djt.dongjitang.Adpter.Online_Shop_Goods_RecycleView_Adapter;
@@ -43,13 +44,14 @@ public class OnlineFragment extends BaseFragment {
     //设置商品的种类的数据展示
     private RecyclerView online_shop_goods_recycleview;
     //设置 recycleView的adapter
-    private Online_Shop_Goods_RecycleView_Adapter online_shop_goods_recycleView_adapter;
+    public Online_Shop_Goods_RecycleView_Adapter online_shop_goods_recycleView_adapter;
     //在线商城界面的 的联网
     private OnlineFragmentNet onlineFragmentNet;
     //轮播图连网 解析到的图片 地址
     private List<String> loopnetUrls;
-    //购物车动画类
-    ShopCarAnimation shopCarAnimation;
+    //商品的个数
+    private TextView bv_nunm;
+
     //轮播图的对象集合
     private ArrayList<ADInfo> infos = new ArrayList<ADInfo>();
     //获得 底部导航栏的 购物车 imageView 用于处理购物车动画的结束位置
@@ -57,6 +59,8 @@ public class OnlineFragment extends BaseFragment {
     //获得 fragment的管理类
     private FragmentActivity mfragmentActivity;
 
+    //选中的 商品的 集合
+    private List<Product_Goods> selectedList = new ArrayList<>();
     public OnlineFragment(Context context) {
         //上下文 代码运行的 环境
         this.mcontext = context;
@@ -77,6 +81,7 @@ public class OnlineFragment extends BaseFragment {
         mimageViewShopingCar= (ImageView) mfragmentActivity.findViewById(R.id.iv_shopcar);
         //创建动画类对象
         shopCarAnimation=new ShopCarAnimation(mcontext,mfragmentActivity,mimageViewShopingCar);
+        bv_nunm= (TextView) mfragmentActivity.findViewById(R.id.bv_nunm);
     }
     @Override
     protected void initListener() {
@@ -123,13 +128,23 @@ public class OnlineFragment extends BaseFragment {
     }
 
     /**
-     * 设置动画 结束位置 并启动动画
-     * @param v
-     * @param startLocation
+     * 重载 解决 购物车－的情况
+     * @param sum_goods_coun
      */
-    public void setAnim(final View v, int[] startLocation)
+    public void setAnim(int sum_goods_coun)
     {
-        shopCarAnimation.setAnim(v,startLocation);
+        if (sum_goods_coun>0)
+        {
+            bv_nunm.setVisibility(View.VISIBLE);
+            bv_nunm.setText(sum_goods_coun+"");
+        }
+        else {
+            bv_nunm.setVisibility(View.GONE);
+        }
     }
+
+
+
+
 }
 

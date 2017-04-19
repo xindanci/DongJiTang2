@@ -25,9 +25,11 @@ public class OnlineFragmentNet {
         return imageUrls;
     }
     public ArrayList<Product_Goods> getListProductInfo() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 1; i < 10; i++) {
             Product_Goods product_goods=new Product_Goods();
+            product_goods.setId(i);
             product_goods.setName("东阿胶"+i);
+            product_goods.setCount(0);
             list_product_goods.add(product_goods);
         }
         return list_product_goods;

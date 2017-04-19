@@ -2,12 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="199px"
-    android:weightSum="720"
+    android:background="#fff"
     android:orientation="horizontal">
     <LinearLayout
         android:layout_width="0px"
         android:layout_weight="15"
         android:layout_height="match_parent" />
+
 
     <LinearLayout
         android:layout_width="0px"
@@ -41,7 +42,7 @@
             android:layout_weight="3.5"
             >
             <TextView
-                android:id="@+id/shop_goods_name"
+                android:id="@+id/shop_car_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="宁夏枸杞宁夏枸杞宁夏枸杞宁夏枸杞宁夏枸杞宁夏枸杞宁夏枸杞"
@@ -117,71 +118,44 @@
             <ImageView
                 android:layout_toRightOf="@id/goods_prices"
                 android:id="@+id/black_item_goods"
-                android:layout_width="40px"
+                android:layout_width="100px"
                 android:layout_height="match_parent"/>
-            <LinearLayout
-                android:layout_toRightOf="@id/black_item_goods"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_centerVertical="true">
-                <ImageView
-                    android:layout_width="30px"
-                    android:layout_height="30px"
-                    android:background="@mipmap/comment_icon_number"
-                    />
-                <ImageView
-                    android:layout_width="5px"
-                    android:layout_height="match_parent" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20px"
-                    android:textColor="#666"
-                    android:text="123456"
-                    />
-            </LinearLayout>
-            <ImageView
-                android:id="@+id/shop_goods_shopping_cart"
-                android:layout_width="160px"
-                android:visibility="visible"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:background="@mipmap/item_goods_put_shoping_car"
-                />
             <RelativeLayout
                 android:id="@+id/add_remove_control"
                 android:layout_height="match_parent"
-                android:layout_width="160px"
+                android:layout_width="280px"
                 android:layout_alignParentRight="true"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:gravity="left|center"
                 >
                 <ImageView
-                    android:id="@+id/iv_add"
+                    android:id="@+id/shop_car_iv_add"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:onClick="onClick"
+                    android:layout_marginLeft="10px"
                     android:src="@mipmap/shop_online_add" />
 
                 <TextView
-                    android:id="@+id/tv_count"
+                    android:id="@+id/shop_car_tv_count"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_centerInParent="true"
-                    android:layout_marginLeft="0px"
+                    android:layout_marginLeft="10px"
+                    android:gravity="center"
                     android:layout_toLeftOf="@+id/iv_add"
                     android:text="1"
+                    android:background="@mipmap/shop_online_number_background"
                     />
 
                 <ImageView
-                    android:id="@+id/iv_remove"
-                    android:layout_width="match_parent"
+                    android:id="@+id/shop_car_iv_remove"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_centerVertical="true"
                     android:layout_toLeftOf="@id/tv_count"
+
                     android:src="@mipmap/shop_online_remove" />
             </RelativeLayout>
         </RelativeLayout>
