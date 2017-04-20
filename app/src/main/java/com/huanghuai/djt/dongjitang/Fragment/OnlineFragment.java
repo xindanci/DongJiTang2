@@ -17,15 +17,18 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.huanghuai.djt.dongjitang.Adpter.Online_Shop_Goods_RecycleView_Adapter;
+import com.huanghuai.djt.dongjitang.Application.MyApplication;
 import com.huanghuai.djt.dongjitang.Bean.ADInfo;
 import com.huanghuai.djt.dongjitang.Bean.Product_Goods;
 import com.huanghuai.djt.dongjitang.CustomUI.FullLinearLayout;
 import com.huanghuai.djt.dongjitang.CustomUI.RecycleViewDivider;
 import com.huanghuai.djt.dongjitang.CustomUI.ShopCarAnimation;
 import com.huanghuai.djt.dongjitang.CustomUI.SimpleCycleViewPager;
+import com.huanghuai.djt.dongjitang.Gen.Product_GoodsDao;
 import com.huanghuai.djt.dongjitang.Net.OnlineFragmentNet;
 import com.huanghuai.djt.dongjitang.R;
 import com.huanghuai.djt.dongjitang.Utils.ToastUtils;
@@ -51,7 +54,8 @@ public class OnlineFragment extends BaseFragment {
     private List<String> loopnetUrls;
     //商品的个数
     private TextView bv_nunm;
-
+    //商品的数据库
+    private Product_GoodsDao product_goodsDao;
     //轮播图的对象集合
     private ArrayList<ADInfo> infos = new ArrayList<ADInfo>();
     //获得 底部导航栏的 购物车 imageView 用于处理购物车动画的结束位置
@@ -82,10 +86,60 @@ public class OnlineFragment extends BaseFragment {
         //创建动画类对象
         shopCarAnimation=new ShopCarAnimation(mcontext,mfragmentActivity,mimageViewShopingCar);
         bv_nunm= (TextView) mfragmentActivity.findViewById(R.id.bv_nunm);
+        product_goodsDao= MyApplication.getApplication().getDaoSession().getProduct_GoodsDao();
+
+    }
+    /**
+     * 初始化 选中的 商品和联网的 数据 进行匹配 更新获取到的 商品的 选择的 商品数量
+     */
+    private void initAdapterData() {
+        for (int i = 0; i < list_product_goods.size(); i++) {
+            for (int j = 0; j < selectedList.size(); j++) {
+                if (selectedList.get(j).getId()==list_product_goods.get(i).getId())
+                {
+                    list_product_goods.get(i).setCount(selectedList.get(j).getCount());
+                }
+            }
+        }
+        online_shop_goods_recycleView_adapter.notifyDataSetChanged();
+    }
+
+    /**
+     * 获取 数据库中的 已经选择的 商品的 集合
+     */
+    private void initSelect() {
+        selectedList=product_goodsDao.loadAll();
+        setBv_number();
     }
     @Override
     protected void initListener() {
+        online_shop_goods_recycleView_adapter.setAddAndRemoveOnlcick(new Online_Shop_Goods_RecycleView_Adapter.AddAndRemove() {
+            @Override
+            public void add(int i) {
+                Product_Goods product_goods=list_product_goods.get(i);
+                product_goods.setCount(product_goods.getCount()+1);
+                insertOrUpdate(i);
+                online_shop_goods_recycleView_adapter.notifyDataSetChanged();
+                setBv_number();
+            }
 
+            @Override
+            public void remove(int i) {
+                int count=list_product_goods.get(i).getCount();
+                if (count==0)
+                {
+                    bv_nunm.setVisibility(View.GONE);
+                    online_shop_goods_recycleView_adapter.notifyDataSetChanged();
+                    return;
+                }
+
+                list_product_goods.get(i).setCount(list_product_goods.get(i).getCount()-1);
+                insertOrUpdate(i);
+                online_shop_goods_recycleView_adapter.notifyDataSetChanged();
+                setBv_number();
+            }
+
+        });
     }
     @Override
     protected void initDate() {
@@ -95,6 +149,9 @@ public class OnlineFragment extends BaseFragment {
         }
         topRollIconImag();
         recycleViewProductInfo();
+        initSelect();
+        //初始话 数据更新
+        initAdapterData();
     }
 
     @Override
@@ -114,7 +171,6 @@ public class OnlineFragment extends BaseFragment {
         infos.clear();
         loopnetUrls = onlineFragmentNet.getListDate();
         simpleCycleViewPager.setDatasource(loopnetUrls);
-
     }
 
     /**
@@ -126,25 +182,27 @@ public class OnlineFragment extends BaseFragment {
         online_shop_goods_recycleView_adapter = new Online_Shop_Goods_RecycleView_Adapter(mcontext, list_product_goods,this);
         online_shop_goods_recycleview.setAdapter(online_shop_goods_recycleView_adapter);
     }
-
-    /**
-     * 重载 解决 购物车－的情况
-     * @param sum_goods_coun
-     */
-    public void setAnim(int sum_goods_coun)
+    public void insertOrUpdate(int i)
     {
-        if (sum_goods_coun>0)
-        {
-            bv_nunm.setVisibility(View.VISIBLE);
-            bv_nunm.setText(sum_goods_coun+"");
+        product_goodsDao.insertOrReplace(list_product_goods.get(i));
+    }
+    //初始化 底部购物车数量
+
+    private void setBv_number()
+    {
+        int zoom_number=0;
+        for (int i = 0; i < selectedList.size(); i++) {
+            zoom_number+=selectedList.get(i).getCount();
         }
-        else {
+        if (zoom_number==0) {
             bv_nunm.setVisibility(View.GONE);
         }
+        else {
+            bv_nunm.setVisibility(View.VISIBLE);
+//            bv_nunm.setText(zoom_number+"");
+        }
+        ToastUtils.showInfo(mcontext,"--"+zoom_number);
     }
-
-
-
 
 }
 

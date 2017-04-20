@@ -2,6 +2,8 @@ package com.huanghuai.djt.dongjitang.Fragment;
 
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -118,8 +120,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 ActivityJumpUtils.JumpIntentActivity(mcontext, NewsActivity.class);
                 break;
             case R.id.search_consultation:
-                ToastUtils.showInfo(mcontext, "我是咨询");
-                ActivityJumpUtils.JumpIntentActivity(mcontext, SearchConsultation.class);
+                String url="mqqwpa://im/chat?chat_type=wpa&uin=2853700237";
+                mcontext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
                 break;
             case R.id.search_doctor:
                 ToastUtils.showInfo(mcontext, "我是找医生");

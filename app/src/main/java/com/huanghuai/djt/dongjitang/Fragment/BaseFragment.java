@@ -34,8 +34,8 @@ public abstract class BaseFragment extends Fragment {
         super.onStart();
         getmContext();
         initView();
-        initListener();
         initDate();
+        initListener();
     }
     protected abstract View getResourceView(LayoutInflater inflater, ViewGroup container);
     protected abstract void  initView();

@@ -19,8 +19,7 @@ import com.huanghuai.djt.dongjitang.Fragment.BaseFragment;
 import com.huanghuai.djt.dongjitang.Fragment.OnlineFragment;
 
 import com.huanghuai.djt.dongjitang.R;
-
-
+import com.huanghuai.djt.dongjitang.Utils.ToastUtils;
 
 
 import java.util.ArrayList;
@@ -36,8 +35,7 @@ public class Online_Shop_Goods_RecycleView_Adapter extends RecyclerView.Adapter<
     private List monline_goods_list;
     private Context mcontext;
     private BaseFragment mBaseFragment;
-
-    private ArrayList<Product_Goods> selectedList = new ArrayList<>();
+//    private ArrayList<Product_Goods> selectedList = new ArrayList<>();
 
     /**
      * 构造方法初始化
@@ -68,106 +66,57 @@ public class Online_Shop_Goods_RecycleView_Adapter extends RecyclerView.Adapter<
      * @param i
      */
     @Override
-    public void onBindViewHolder(final MyViewHolder viewHolder, int i) {
+    public void onBindViewHolder(final MyViewHolder viewHolder, final int i) {
         //当前条目的 所对应的 数据对象
         Product_Goods product_goods = (Product_Goods) monline_goods_list.get(i);
-        initListener(viewHolder, i);
-        initBindDate(viewHolder, product_goods);
-    }
-
-    /**
-     * 绑定数据
-     */
-    private void initBindDate(MyViewHolder myViewHolder, Product_Goods product_goods) {
-        myViewHolder.shop_goods_name.setText(product_goods.getName());
-        if (product_goods != null) {
-            //默认进来数量
-            if (product_goods.getCount() < 1) {
-                myViewHolder.tv_count.setVisibility(View.INVISIBLE);
-                myViewHolder.iv_remove.setVisibility(View.INVISIBLE);
-//                monlineFragment.online_shop_goods_recycleView_adapter.notifyDataSetChanged();
-            } else {
-                myViewHolder.tv_count.setVisibility(View.VISIBLE);
-                myViewHolder.iv_remove.setVisibility(View.VISIBLE);
-                myViewHolder.tv_count.setText(String.valueOf(product_goods.getCount()));
-//                monlineFragment.online_shop_goods_recycleView_adapter.notifyDataSetChanged();
-            }
-        } else {
-            myViewHolder.tv_count.setVisibility(View.INVISIBLE);
-            myViewHolder.iv_remove.setVisibility(View.INVISIBLE);
+        viewHolder.shop_goods_name.setText(((Product_Goods) monline_goods_list.get(i)).getName());
+        //设置添加进购物车的逻辑
+//        setShopCarShow(product_goods,viewHolder,i);
+        if (product_goods.getCount()<1) {
+            viewHolder.shop_goods_shopping_cart.setVisibility(View.VISIBLE);
+            viewHolder.iv_add.setVisibility(View.GONE);
+            viewHolder.tv_count.setVisibility(View.GONE);
+            viewHolder.iv_remove.setVisibility(View.GONE);
         }
-    }
-
-    /**
-     * 处理holder中的item 数据的点击事件
-     */
-    private void initListener(final MyViewHolder viewHolder, final int i) {
-        viewHolder.shop_goods_shopping_cart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                viewHolder.shop_goods_shopping_cart.setVisibility(View.GONE);
-                viewHolder.add_remove_control.setVisibility(View.VISIBLE);
-                setAnimation(view);
-            }
-        });
-
-
+        else {
+            viewHolder.shop_goods_shopping_cart.setVisibility(View.GONE);
+            viewHolder.iv_add.setVisibility(View.VISIBLE);
+            viewHolder.tv_count.setVisibility(View.VISIBLE);
+            viewHolder.iv_remove.setVisibility(View.VISIBLE);
+            viewHolder.tv_count.setText(product_goods.getCount());
+            ToastUtils.showInfo(mcontext,"aaaa"+product_goods.getCount());
+//            ToastUtils.showInfo(mcontext,product_goods.getCount()+"");
+        }
         viewHolder.iv_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int product_id = ((Product_Goods) monline_goods_list.get(i)).getId();
-                if (product_id < 1) {
-                    viewHolder.iv_remove.setVisibility(View.VISIBLE);
-                    viewHolder.tv_count.setVisibility(View.VISIBLE);
-                }
-                handlerCarNum(1, ((Product_Goods) monline_goods_list.get(i)), true);
-//                monlineFragment.online_shop_goods_recycleView_adapter.notifyDataSetChanged();
-
+                /**
+                 * 监听回调
+                 */
+                maddAndRemoveOnlcick.add(i);
+                setAnimation(view);
+            }
+        });
+        viewHolder.iv_remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /**
+                 * 监听回调
+                 */
+                maddAndRemoveOnlcick.remove(i);
+            }
+        });
+        /**
+         * 设置 添加进购物车的 按钮的 事件 监听
+         */
+        viewHolder.shop_goods_shopping_cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                maddAndRemoveOnlcick.add(i);
                 setAnimation(view);
             }
         });
 
-
-        viewHolder.iv_remove.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int product_id = ((Product_Goods) monline_goods_list.get(i)).getId();
-                if (product_id < 2) {
-//                    viewHolder.iv_remove.setAnimation(getHiddenAnimation());
-                    viewHolder.iv_remove.setVisibility(View.GONE);
-                    viewHolder.tv_count.setVisibility(View.GONE);
-                }
-                handlerCarNum(0, ((Product_Goods) monline_goods_list.get(i)), true);
-//                monlineFragment.online_shop_goods_recycleView_adapter.notifyDataSetChanged();
-            }
-        });
-
-    }
-
-    public void handlerCarNum(int type, Product_Goods goodsBean, boolean refreshGoodList) {
-        if (type == 0) {
-            if (goodsBean != null) {
-                if (goodsBean.getCount() < 2) {
-                    goodsBean.setCount(0);
-                    selectedList.remove(goodsBean.getId());
-//                    selectedList.remove()
-                } else {
-                    int i = goodsBean.getCount();
-                    goodsBean.setCount(--i);
-                }
-            }
-        } else if (type == 1) {
-
-            if (goodsBean == null) {
-                goodsBean.setCount(1);
-                selectedList.add(goodsBean.getId(),goodsBean);
-            } else {
-                int i = goodsBean.getCount();
-                goodsBean.setCount(++i);
-            }
-        }
-//        mBaseFragment.update(refreshGoodList);
     }
 
     /**
@@ -195,7 +144,6 @@ public class Online_Shop_Goods_RecycleView_Adapter extends RecyclerView.Adapter<
     /**
      * 创建holder
      */
-
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         //对应 商品的 图片信息,商品标签，加入购物车
         ImageView shop_goods_icon, shop_goods_Label, shop_goods_shopping_cart, iv_add, iv_remove;
@@ -217,6 +165,23 @@ public class Online_Shop_Goods_RecycleView_Adapter extends RecyclerView.Adapter<
             tv_count = (TextView) itemView.findViewById(R.id.tv_count);
         }
     }
+    /**
+     * 使用 监听回调
+     *
+     */
+    private  AddAndRemove maddAndRemoveOnlcick;
+    public  interface AddAndRemove{
+        public void add(int i);
+        public void remove(int i);
+
+
+    }
+    public void setAddAndRemoveOnlcick(AddAndRemove addAndRemoveOnlcick)
+    {
+        this.maddAndRemoveOnlcick=addAndRemoveOnlcick;
+    }
+
+
 }
 
 

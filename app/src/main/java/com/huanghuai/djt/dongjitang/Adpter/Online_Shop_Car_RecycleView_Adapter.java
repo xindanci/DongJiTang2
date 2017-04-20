@@ -70,7 +70,7 @@ public class Online_Shop_Car_RecycleView_Adapter extends RecyclerView.Adapter<On
      * 绑定数据
      */
     private void initBindDate(MyViewHolder myViewHolder, Product_Goods product_goods) {
-        myViewHolder.shop_car_name.setText(product_goods.getName());
+//        myViewHolder.shop_car_name.setText(product_goods.getName());
 
     }
 

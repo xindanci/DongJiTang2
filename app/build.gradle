@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin:'org.greenrobot.greendao'
 android {
     compileSdkVersion 23
     buildToolsVersion '23.0.3'
@@ -17,6 +17,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    greendao{
+        schemaVersion 1
+
+        daoPackage 'com.huanghuai.djt.dongjitang.Gen'
+        targetGenDir 'src/main/java'
+    }
 }
 
 dependencies {
@@ -26,4 +32,6 @@ dependencies {
     compile 'com.facebook.fresco:fresco:0.12.0'
     compile files('libs/okhttp-3.4.1.jar')
     compile files('libs/okio-1.10.0.jar')
+    compile 'org.greenrobot:greendao:3.1.1'
+    compile 'org.greenrobot:greendao-generator:3.1.0'
 }
