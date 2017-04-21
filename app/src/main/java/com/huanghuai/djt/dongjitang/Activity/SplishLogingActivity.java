@@ -77,7 +77,7 @@ public class SplishLogingActivity extends BaseActivity {
 
     }
     /**
-    跳转到主界面
+     跳转到主界面
      */
     private void startMainActivity() {
         Intent intent=new Intent();

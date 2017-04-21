@@ -25,12 +25,16 @@
         <activity android:name=".Activity.SplishActivity"
             android:theme="@style/NoTitle"
             />
+        <activity android:name=".Activity.EvaluateResultActivaty"
+            android:theme="@style/NoTitle"
+            />
         <activity android:name=".Activity.NewsActivity"
             android:theme="@style/NoTitle"/>
         <activity android:name=".Activity.SearchActivity"
             />
         <activity android:name=".Activity.SearchConsultation"/>
-        <activity android:name=".Activity.IdentificationActivity"/>
+        <activity android:name=".Activity.IdentificationActivity"
+            android:theme="@style/NoTitle"/>
         <activity android:name=".Activity.MapnavigationActivity"
             android:theme="@style/ImageTranslucentTheme"
             />

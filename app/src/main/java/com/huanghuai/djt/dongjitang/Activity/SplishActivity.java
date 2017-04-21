@@ -39,6 +39,7 @@ public class SplishActivity extends BaseActivity implements ViewPager.OnPageChan
     private LinearLayout ll;
     //
     private Button bt_login;
+    private Button start_review;
     @Override
     public int getContentView() {
         return R.layout.activity_splish;
@@ -55,6 +56,7 @@ public class SplishActivity extends BaseActivity implements ViewPager.OnPageChan
         viewPager= (ViewPager) findViewById(R.id.viewpager);
 
         bt_login= (Button) findViewById(R.id.bt_login);
+        start_review=(Button)findViewById(R.id.start_review);
         LayoutInflater inflater = LayoutInflater.from(this);
         RelativeLayout guideFour = (RelativeLayout) inflater.inflate(R.layout.guide_four, null);
         RelativeLayout guideOne = (RelativeLayout) inflater.inflate(R.layout.guide_one, null);
@@ -69,7 +71,7 @@ public class SplishActivity extends BaseActivity implements ViewPager.OnPageChan
     }
 
     private void initDots() {
-         ll = (LinearLayout) findViewById(R.id.ll);
+        ll = (LinearLayout) findViewById(R.id.ll);
 
         dots = new ImageView[views.size()];
 
@@ -94,12 +96,14 @@ public class SplishActivity extends BaseActivity implements ViewPager.OnPageChan
         {
             ll.setVisibility(View.GONE);
             bt_login.setVisibility(View.VISIBLE);
+            start_review.setVisibility(View.VISIBLE);
 
         }
         else
         {
             ll.setVisibility(View.VISIBLE);
             bt_login.setVisibility(View.GONE);
+            start_review.setVisibility(View.GONE);
         }
         for (int i = 0; i < views.size(); i++) {
             dots[i].setBackgroundResource(R.mipmap.bai);
@@ -117,8 +121,9 @@ public class SplishActivity extends BaseActivity implements ViewPager.OnPageChan
 
     @Override
     protected void initLitener() {
-    viewPager.setOnPageChangeListener(this);
+        viewPager.setOnPageChangeListener(this);
         bt_login.setOnClickListener(this);
+        start_review.setOnClickListener(this);
     }
 
     @Override
@@ -155,7 +160,7 @@ public class SplishActivity extends BaseActivity implements ViewPager.OnPageChan
         setCurrentDot(position);
     }
     /**
-    当页面状态 改变的 时候调用
+     当页面状态 改变的 时候调用
      */
     @Override
     public void onPageScrollStateChanged(int state) {
@@ -165,9 +170,20 @@ public class SplishActivity extends BaseActivity implements ViewPager.OnPageChan
     //button 的点击监听
     @Override
     public void onClick(View v) {
-        Intent intent=new Intent();
-        intent.setClass(mcontext,MainActivity.class);
-        startActivity(intent);
-        finish();
+        switch (v.getId()){
+            case R.id.bt_login:
+                Intent intent=new Intent();
+                intent.setClass(mcontext,MainActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.start_review:
+                Intent intent1=new Intent();
+                intent1.setClass(mcontext,IdentificationActivity.class);
+                startActivity(intent1);
+                finish();
+                break;
+        }
+
     }
 }
