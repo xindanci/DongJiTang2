@@ -1,14 +1,245 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/news_bg">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="20sp"
-        android:text="我是消息界面"
-        android:gravity="center"
-        android:textColor="#0f0"
-        />
+        android:weightSum="16"
+        android:orientation="vertical">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:background="@mipmap/news_title_bg">
+            <Button
+                android:layout_width="20dip"
+                android:layout_height="33dip"
+                android:background="@mipmap/news_arrow"
+                android:layout_marginLeft="20dip"
+                android:layout_gravity="center_vertical"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="消息提醒"
+                android:textSize="22dip"
+                android:gravity="center"/>
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/news_time"
+            android:layout_gravity="center"
+            android:text="  2017年4月5日  "
+            android:textColor="#EAEAEA"
+            android:textSize="17dip"
+            android:layout_marginTop="5dip"
+            />
+        <LinearLayout android:id="@+id/news_show_area"
+            android:layout_marginTop="5dip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@mipmap/news_showarea">
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="订单号:"
+                    android:textSize="17dp"
+                    android:layout_marginLeft="150dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="1234567890"
+                    android:textSize="17dip"/>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView android:layout_marginLeft="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="药品名称："
+                        android:textSize="13dp"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="宁夏枸杞"
+                        android:textSize="13dp"
+                        />
+                    <TextView android:layout_marginLeft="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="规格："
+                        android:textSize="13dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="60g×2"
+                        android:textSize="13dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView android:layout_marginLeft="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="收货方式："
+                        android:textSize="13dp"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="快递送货"
+                        android:textSize="13dp"
+                        />
+                    <TextView android:layout_marginLeft="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="快递单号："
+                        android:textSize="13dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="154855448"
+                        android:textSize="13dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView android:layout_marginLeft="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="下单日期："
+                        android:textSize="13dp"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="2017年3月28日"
+                        android:textSize="13dp"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/news_time"
+            android:layout_gravity="center"
+            android:text="  2017年4月5日  "
+            android:textSize="17dip"
+            android:textColor="#EAEAEA"
+            android:layout_marginTop="5dip"
+            android:id="@+id/textView" />
+
+        <LinearLayout android:layout_marginTop="5dip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@mipmap/news_showarea">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="医疗证号"
+                    android:textSize="17dp"
+                    android:layout_marginLeft="150dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="98765541450"
+                    android:textSize="17dip"/>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView android:layout_marginLeft="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="挂号医师："
+                        android:textSize="13dp"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="余兵"
+                        android:textSize="13dp"
+                        />
+                    <TextView android:layout_marginLeft="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="科别："
+                        android:textSize="13dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="内科"
+                        android:textSize="13dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView android:layout_marginLeft="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="就诊时间："
+                        android:textSize="13dp"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="2017-04-27"
+                        android:textSize="13dp"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView android:layout_marginLeft="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="挂号费："
+                        android:textSize="13dp"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="¥20.00"
+                        android:textSize="13dp"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

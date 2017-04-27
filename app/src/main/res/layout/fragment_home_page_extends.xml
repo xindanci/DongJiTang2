@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="80px"
         android:layout_marginBottom="5px"
-        android:background="@mipmap/ic_home_title">
+        android:background="@mipmap/ic_home_title"
+        >
 
         <LinearLayout
             android:layout_width="0dp"

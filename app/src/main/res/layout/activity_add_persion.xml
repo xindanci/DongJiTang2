@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_add_persion"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/choice_doctor_title">
+        <Button android:id="@+id/back_to_choice_doctor"
+            android:layout_width="17dp"
+            android:layout_height="23dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:background="@mipmap/news_arrow"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="添加人数"
+            android:textSize="25dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"/>
+    </LinearLayout>
+    <LinearLayout android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="姓名："
+            android:textSize="20dp"
+            />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="张三"
+            android:textSize="20dp"/>
+    </LinearLayout>
+    <LinearLayout android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="性别："
+            android:textSize="20dp"/>
+        <CheckBox
+            android:layout_width="30dp"
+            android:layout_height="20dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="男"
+            android:textSize="20dp"
+            />
+        <CheckBox android:layout_marginLeft="10dp"
+            android:layout_width="30dp"
+            android:layout_height="20dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="女"
+            android:textSize="20dp"/>
+    </LinearLayout>
+    <LinearLayout android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="年龄："
+            android:textSize="20dp"
+            />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="30岁"
+            android:textSize="20dp"/>
+    </LinearLayout>
+    <LinearLayout android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="电话："
+            android:textSize="20dp"
+            />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12345678900"
+            android:textSize="20dp"/>
+    </LinearLayout>
+    <LinearLayout android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="挂号类型："
+            android:textSize="20dp"/>
+        <CheckBox
+            android:layout_width="30dp"
+            android:layout_height="20dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="初诊"
+            android:textSize="20dp"
+            />
+        <CheckBox android:layout_marginLeft="10dp"
+            android:layout_width="30dp"
+            android:layout_height="20dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="复诊"
+            android:textSize="20dp"/>
+    </LinearLayout>
+    <LinearLayout android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="现居地址："
+            android:textSize="20dp"/>
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner_province"
+            />
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="省"
+            android:textSize="20dp"/>
+        <Spinner android:layout_marginLeft="20dp"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner_downtown"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="市"
+            android:textSize="20dp"/>
+
+
+    </LinearLayout>
+    <LinearLayout android:layout_marginLeft="120dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <Spinner
+        android:layout_marginLeft="20dp"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_county"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="区/县"
+        android:textSize="20dp"/>
+    </LinearLayout>
+    <EditText android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="请输入详细地址，如XX小区"/>
+    <Button android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/submit_bt"/>
+
+</LinearLayout>

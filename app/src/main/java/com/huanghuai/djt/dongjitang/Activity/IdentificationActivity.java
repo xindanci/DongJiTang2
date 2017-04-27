@@ -55,7 +55,6 @@ public class IdentificationActivity extends BaseActivity implements View.OnClick
     private Button mbutton3;
     private Button mbutton4;
     private Button mbutton5;
-    private ViewPager viewPager;
     @Override
     protected void addActivity() {
 
